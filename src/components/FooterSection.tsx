@@ -15,22 +15,12 @@ const FooterSection = () => {
 
           {/* Links */}
           <div className="flex flex-col gap-2 text-sm">
-            <a
-              href="https://docs.google.com/document/d/14sltAeEh9rghEjRRCqGGB9CSClvG466nISbGP5s5qBo/edit?tab=t.0"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-colors"
-            >
+            <Link to="/terms" className="text-muted-foreground hover:text-primary transition-colors">
               Terms and Conditions
-            </a>
-            <a
-              href="https://docs.google.com/document/d/e/2PACX-1vSRGOJOiAvZ_V_8VHND-Z2Eyma9_CiYUV8ScqmQbkiBBkMjZ2TIu9k-h_Er5tJseSS8FKlVNQ5s3Lew/pub"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-colors"
-            >
+            </Link>
+            <Link to="/privacy" className="text-muted-foreground hover:text-primary transition-colors">
               Privacy Policy
-            </a>
+            </Link>
           </div>
 
           {/* Contact */}
