@@ -27,7 +27,9 @@ const Navbar = () => {
           <a href="#trust" className="hover:text-primary transition-colors">Trust</a>
         </div>
         <a
-          href="#features"
+          href="https://play.google.com/store/apps/details?id=com.quantum.assistant"
+          target="_blank"
+          rel="noopener noreferrer"
           className="inline-flex items-center justify-center rounded-full px-5 py-2 text-sm font-semibold text-primary-foreground bg-primary glow-teal transition-transform hover:scale-105"
         >
           Get App

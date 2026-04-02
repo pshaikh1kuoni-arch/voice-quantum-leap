@@ -29,7 +29,9 @@ const HeroSection = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
             <a
-              href="#features"
+              href="https://play.google.com/store/apps/details?id=com.quantum.assistant"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center rounded-full px-8 py-3.5 font-semibold text-primary-foreground bg-primary glow-teal transition-transform hover:scale-105"
             >
               Download Now
