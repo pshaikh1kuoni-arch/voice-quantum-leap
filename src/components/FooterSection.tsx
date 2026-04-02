@@ -1,5 +1,6 @@
 import quantumLogo from "@/assets/quantum-logo.png";
 import { Mail } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const FooterSection = () => {
   return (
