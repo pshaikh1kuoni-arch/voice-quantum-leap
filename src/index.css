@@ -1,67 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
-
 @layer base {
   :root {
-    --background: 210 25% 5%;
-    --foreground: 180 20% 95%;
+    /* JSM Nexus — "Cloud Dancer" design system */
+    --background: 43 27% 97%;
+    --foreground: 30 6% 11%;
 
-    --card: 210 30% 8%;
-    --card-foreground: 180 20% 95%;
+    --card: 0 0% 100%;
+    --card-foreground: 30 6% 11%;
 
-    --popover: 210 30% 8%;
-    --popover-foreground: 180 20% 95%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 30 6% 11%;
 
-    --primary: 174 80% 45%;
-    --primary-foreground: 210 25% 5%;
+    --primary: 258 90% 66%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 80 70% 55%;
-    --secondary-foreground: 210 25% 5%;
+    --secondary: 189 94% 43%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 210 20% 15%;
-    --muted-foreground: 210 15% 60%;
+    --muted: 45 25% 93%;
+    --muted-foreground: 27 5% 40%;
 
-    --accent: 220 85% 55%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 258 90% 66%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 210 20% 18%;
-    --input: 210 20% 18%;
-    --ring: 174 80% 45%;
+    --border: 30 15% 88%;
+    --input: 30 15% 88%;
+    --ring: 258 90% 66%;
 
-    --radius: 0.75rem;
+    --radius: 1rem;
 
-    /* Custom Quantum tokens */
-    --quantum-teal: 174 80% 45%;
-    --quantum-lime: 80 70% 55%;
-    --quantum-blue: 220 85% 55%;
-    --quantum-glow: 0 0% 100%;
-    --glass-bg: 210 30% 10% / 0.6;
-    --glass-border: 174 80% 45% / 0.2;
-    --gradient-quantum: linear-gradient(135deg, hsl(174 80% 45%), hsl(80 70% 55%));
-    --gradient-hero: linear-gradient(135deg, hsl(220 85% 55% / 0.3), hsl(174 80% 45% / 0.3), hsl(80 70% 55% / 0.2));
-    --shadow-glow-teal: 0 0 40px hsl(174 80% 45% / 0.3);
-    --shadow-glow-blue: 0 0 40px hsl(220 85% 55% / 0.3);
+    /* Brand tokens — kept as "quantum-*" names for backward compatibility with
+       the relocated Quantum Assistant product page, repointed to the new palette */
+    --quantum-teal: 258 90% 66%;
+    --quantum-lime: 189 94% 43%;
+    --quantum-blue: 189 94% 43%;
+    --quantum-glow: 258 90% 66%;
+    --glass-bg: 0 0% 100% / 0.6;
+    --glass-border: 258 90% 66% / 0.18;
+    --gradient-quantum: linear-gradient(120deg, hsl(258 90% 66%), hsl(189 94% 43%));
+    --gradient-hero: radial-gradient(600px 460px at 50% 15%, hsl(258 90% 66% / 0.12), transparent 70%);
+    --shadow-glow-teal: 0 10px 30px hsl(258 90% 66% / 0.28);
+    --shadow-glow-blue: 0 10px 30px hsl(189 94% 43% / 0.25);
 
-    --sidebar-background: 210 25% 5%;
-    --sidebar-foreground: 180 20% 95%;
-    --sidebar-primary: 174 80% 45%;
-    --sidebar-primary-foreground: 210 25% 5%;
-    --sidebar-accent: 210 20% 15%;
-    --sidebar-accent-foreground: 180 20% 95%;
-    --sidebar-border: 210 20% 18%;
-    --sidebar-ring: 174 80% 45%;
+    --sidebar-background: 43 27% 97%;
+    --sidebar-foreground: 30 6% 11%;
+    --sidebar-primary: 258 90% 66%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 45 25% 93%;
+    --sidebar-accent-foreground: 30 6% 11%;
+    --sidebar-border: 30 15% 88%;
+    --sidebar-ring: 258 90% 66%;
   }
 }
 
 @layer base {
   * {
     @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
   }
   body {
     @apply bg-background text-foreground font-body antialiased;
@@ -73,7 +78,8 @@
 
 @layer components {
   .glass-card {
-    @apply bg-card/60 backdrop-blur-xl border border-glass rounded-2xl;
+    @apply bg-card/80 backdrop-blur-xl border border-glass rounded-2xl;
+    box-shadow: 0 24px 50px hsl(30 6% 11% / 0.06);
   }
   .glow-teal {
     box-shadow: var(--shadow-glow-teal);
@@ -87,7 +93,7 @@
   }
   .quantum-star {
     @apply inline-block;
-    filter: drop-shadow(0 0 6px hsl(174 80% 45% / 0.6));
+    filter: drop-shadow(0 0 6px hsl(258 90% 66% / 0.5));
   }
 }
 
@@ -95,4 +101,9 @@
   .text-balance {
     text-wrap: balance;
   }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-33.3333%); }
 }

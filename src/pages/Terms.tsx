@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
+import { SITE } from "@/lib/site-config";
 
 const Terms = () => {
   return (
@@ -10,43 +11,48 @@ const Terms = () => {
           Back to Home
         </Link>
 
-        <h1 className="text-3xl sm:text-4xl font-bold mb-2">Terms and Conditions for JSM Nexus</h1>
+        <h1 className="text-3xl sm:text-4xl font-bold mb-2">Terms &amp; Conditions</h1>
         <p className="text-muted-foreground mb-10">Last Updated: April 3, 2026</p>
 
         <div className="space-y-8 text-sm leading-relaxed text-muted-foreground">
           <section>
-            <h2 className="text-xl font-semibold text-foreground mb-3">1. Acceptance of Terms</h2>
-            <p>By accessing or using <strong className="text-foreground">Quantum AI: Voice Task Manager</strong>, you agree to be bound by these Terms and Conditions and all applicable laws and regulations.</p>
+            <h2 className="text-xl font-semibold text-foreground mb-3">This site</h2>
+            <p>
+              jsmnexus.in is an informational site. Browsing it doesn't involve any purchase, subscription, or
+              account, so there's nothing to accept a checkout agreement for. The only interaction the site asks of
+              you is an email, if you choose to send one.
+            </p>
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-foreground mb-3">2. Description of Service</h2>
-            <p>JSM Nexus provides an AI-powered voice assistant designed to help users manage tasks and schedule events through integration with third-party services like Google Calendar.</p>
+            <h2 className="text-xl font-semibold text-foreground mb-3">Product terms live with the product</h2>
+            <ul className="list-disc pl-6 space-y-2">
+              <li>
+                <strong className="text-foreground">Quantum Assistant</strong>: purchase terms, refunds, and app permissions
+                are governed by the Google Play Store's own terms.
+              </li>
+              <li>
+                <strong className="text-foreground">ATS Resume Optimizer</strong>: its terms and refund policy live on{" "}
+                <a href={SITE.rezoomeUrl} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">rezoome.in</a>.
+              </li>
+            </ul>
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-foreground mb-3">3. User Conduct</h2>
-            <p>You agree to use the service only for lawful purposes. You are responsible for maintaining the confidentiality of your account and for all activities that occur under your account.</p>
+            <h2 className="text-xl font-semibold text-foreground mb-3">Intellectual property</h2>
+            <p>The content on this site, including its design and written material, belongs to JSM Nexus and its licensors.</p>
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-foreground mb-3">4. Intellectual Property</h2>
-            <p>The application, including its original content, features, and functionality, is and will remain the exclusive property of JSM Nexus and its licensors.</p>
+            <h2 className="text-xl font-semibold text-foreground mb-3">Governing law</h2>
+            <p>These terms are governed by the laws of Maharashtra, India.</p>
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-foreground mb-3">5. Limitation of Liability</h2>
-            <p>In no event shall JSM Nexus be liable for any indirect, incidental, special, consequential, or punitive damages, including loss of profits, data, or use, arising out of your use of the service.</p>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-semibold text-foreground mb-3">6. Termination</h2>
-            <p>We may terminate or suspend your access to our service immediately, without prior notice, for any reason whatsoever, including breach of these Terms.</p>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-semibold text-foreground mb-3">7. Governing Law</h2>
-            <p>These terms shall be governed by and construed in accordance with the laws of India / Maharashtra / Mumbai.</p>
+            <h2 className="text-xl font-semibold text-foreground mb-3">Questions</h2>
+            <p>
+              Email <a href={`mailto:${SITE.email}`} className="text-primary hover:underline">{SITE.email}</a>.
+            </p>
           </section>
         </div>
       </div>

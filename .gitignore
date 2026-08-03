@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Internal planning notes, not part of the deployed site
+planning/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

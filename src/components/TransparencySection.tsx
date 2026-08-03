@@ -12,13 +12,13 @@ const cards = [
     icon: RotateCcw,
     title: "3-Day Refund Policy",
     description:
-      "Not satisfied? Request a full refund within 3 days of purchase—no questions asked. Your satisfaction is our priority.",
+      "Not satisfied? Request a full refund within 3 days of purchase, no questions asked. Your satisfaction is our priority.",
   },
   {
     icon: Zap,
     title: "Instant Digital Delivery",
     description:
-      "Quantum Assistant is delivered instantly upon purchase. No shipping required—download and start boosting your productivity immediately.",
+      "Quantum Assistant is delivered instantly upon purchase. No shipping required, just download and start boosting your productivity immediately.",
   },
 ];
 

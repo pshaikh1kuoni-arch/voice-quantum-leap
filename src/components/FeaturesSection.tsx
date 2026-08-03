@@ -15,7 +15,7 @@ const features = [
   {
     icon: Calendar,
     title: "Unified Google Calendar Sync",
-    description: "Seamless integration with Google Calendar. One-Tap Join for virtual meetings—never miss a Zoom or Meet link again.",
+    description: "Seamless integration with Google Calendar, with one tap join for virtual meetings so you never miss a Zoom or Meet link again.",
   },
   {
     icon: MessageSquareReply,
