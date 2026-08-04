@@ -1,9 +1,11 @@
 import { useEffect } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { usePrefersReducedMotion } from "@/lib/motion";
 import Home from "./pages/Home.tsx";
 import About from "./pages/About.tsx";
 import Academy from "./pages/Academy.tsx";
@@ -28,27 +30,57 @@ const ScrollToTop = () => {
   return null;
 };
 
+const PageTransition = ({ children }: { children: React.ReactNode }) => {
+  const reducedMotion = usePrefersReducedMotion();
+
+  if (reducedMotion) {
+    return <>{children}</>;
+  }
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 8 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -8 }}
+      transition={{ duration: 0.25, ease: [0.25, 0.1, 0.25, 1] }}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
+const AnimatedRoutes = () => {
+  const location = useLocation();
+
+  return (
+    <AnimatePresence mode="wait" initial={false}>
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<PageTransition><Home /></PageTransition>} />
+        <Route path="/about" element={<PageTransition><About /></PageTransition>} />
+        <Route path="/academy" element={<PageTransition><Academy /></PageTransition>} />
+        <Route path="/solutions/fm-ops" element={<PageTransition><B2BSolutions /></PageTransition>} />
+        <Route path="/products" element={<PageTransition><Products /></PageTransition>} />
+        <Route path="/quantum-assistant" element={<PageTransition><QuantumAssistant /></PageTransition>} />
+        <Route path="/ats-resume-optimizer" element={<PageTransition><AtsResumeOptimizer /></PageTransition>} />
+        <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
+        <Route path="/privacy" element={<PageTransition><Privacy /></PageTransition>} />
+        <Route path="/terms" element={<PageTransition><Terms /></PageTransition>} />
+        {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+        <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
+      </Routes>
+    </AnimatePresence>
+  );
+};
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      <div className="grain-overlay" aria-hidden="true" />
       <BrowserRouter>
         <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/academy" element={<Academy />} />
-          <Route path="/solutions/fm-ops" element={<B2BSolutions />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/quantum-assistant" element={<QuantumAssistant />} />
-          <Route path="/ats-resume-optimizer" element={<AtsResumeOptimizer />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/privacy" element={<Privacy />} />
-          <Route path="/terms" element={<Terms />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <AnimatedRoutes />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

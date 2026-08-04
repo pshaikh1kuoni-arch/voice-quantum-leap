@@ -1,8 +1,22 @@
+import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { SiteNavbar } from "@/components/SiteNavbar";
 import { SiteFooter } from "@/components/SiteFooter";
 import { EmailCopyButton } from "@/components/EmailCopyButton";
-import { Reveal, KineticText, TiltCard, CountUp, Marquee, ScrollProgress } from "@/lib/motion";
+import {
+  Reveal,
+  KineticText,
+  TiltCard,
+  CountUp,
+  Marquee,
+  ScrollProgress,
+  Magnetic,
+  useCardStack,
+  StackCard,
+  ScrollRevealText,
+  ImageReveal,
+  SpotlightPanel,
+} from "@/lib/motion";
 import { SITE } from "@/lib/site-config";
 import headshot from "@/assets/parvez-shaikh-headshot.png";
 
@@ -11,6 +25,8 @@ const TRUST_STATS = [
   { value: "10,000+", label: "LinkedIn network" },
   { value: "500+", label: "Workflows automated" },
 ];
+
+const PROOF_TOTAL = 2;
 
 const MARQUEE_ITEMS = [
   "AI for Facility Management",
@@ -22,6 +38,9 @@ const MARQUEE_ITEMS = [
 ];
 
 const Home = () => {
+  const stackRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress: stackProgress } = useCardStack(stackRef);
+
   return (
     <div className="min-h-screen bg-background">
       <ScrollProgress />
@@ -39,23 +58,21 @@ const Home = () => {
 
         <div className="container max-w-6xl mx-auto relative z-10">
           <div className="grid lg:grid-cols-[380px_1fr] gap-12 lg:gap-16 items-center mb-14">
-            <Reveal from="left">
-              <div className="relative mx-auto max-w-[280px] lg:max-w-none">
-                <div className="absolute inset-0 -z-10 rounded-full bg-gradient-to-br from-violet-300/40 to-cyan-300/40 blur-[60px]" />
-                <img
-                  src={headshot}
-                  alt={SITE.founderName}
-                  className="w-full h-auto drop-shadow-[0_20px_40px_rgba(30,20,10,0.15)]"
-                />
-              </div>
-            </Reveal>
+            <div className="relative mx-auto max-w-[280px] lg:max-w-none">
+              <div className="absolute inset-0 -z-10 rounded-full bg-gradient-to-br from-violet-300/40 to-cyan-300/40 blur-[60px]" />
+              <ImageReveal
+                src={headshot}
+                alt={SITE.founderName}
+                imgClassName="w-full h-auto drop-shadow-[0_20px_40px_rgba(30,20,10,0.15)]"
+              />
+            </div>
 
             <div>
               <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 border border-primary/25 rounded-full px-4 py-1.5 mb-7">
                 AI for Facility Management &amp; Real Estate
               </span>
 
-              <h1 className="font-display font-semibold text-4xl sm:text-5xl lg:text-6xl leading-[1.12] mb-6">
+              <h1 className="font-display font-semibold text-hero-display leading-[1.12] mb-6">
                 <KineticText text="I teach the built environment" delay={0.25} />
                 <br />
                 <span className="italic gradient-text">
@@ -72,13 +89,15 @@ const Home = () => {
               </p>
 
               <div className="flex flex-wrap gap-4">
-                <Link
-                  to="/academy"
-                  className="inline-flex items-center justify-center rounded-xl px-6 py-3 font-semibold text-sm text-primary-foreground glow-teal transition-transform hover:-translate-y-0.5"
-                  style={{ background: "var(--gradient-quantum)" }}
-                >
-                  Explore AI Academy
-                </Link>
+                <Magnetic>
+                  <Link
+                    to="/academy"
+                    className="inline-flex items-center justify-center rounded-xl px-6 py-3 font-semibold text-sm text-primary-foreground glow-teal transition-transform hover:-translate-y-0.5"
+                    style={{ background: "var(--gradient-quantum)" }}
+                  >
+                    Explore AI Academy
+                  </Link>
+                </Magnetic>
                 <a
                   href="#proof"
                   className="inline-flex items-center justify-center rounded-xl px-6 py-3 font-semibold text-sm border border-border bg-card hover:border-primary/40 transition-colors"
@@ -91,12 +110,14 @@ const Home = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl">
             {TRUST_STATS.map((s) => (
-              <div key={s.label} className="rounded-2xl border border-border bg-card p-5">
-                <div className="font-display font-semibold text-2xl gradient-text">
-                  <CountUp value={s.value} />
+              <SpotlightPanel key={s.label} className="rounded-2xl border border-border bg-card">
+                <div className="p-5">
+                  <div className="font-display font-semibold text-2xl gradient-text">
+                    <CountUp value={s.value} />
+                  </div>
+                  <div className="text-xs text-muted-foreground mt-1">{s.label}</div>
                 </div>
-                <div className="text-xs text-muted-foreground mt-1">{s.label}</div>
-              </div>
+              </SpotlightPanel>
             ))}
           </div>
         </div>
@@ -116,64 +137,60 @@ const Home = () => {
             </h2>
           </Reveal>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Reveal delay={0} className="lg:col-span-2">
-              <TiltCard className="h-full">
-                <div style={{ background: "var(--gradient-quantum)" }} className="rounded-2xl p-7 h-full text-primary-foreground">
-                  <span className="inline-block text-[10px] font-bold uppercase tracking-wider bg-white/20 rounded-full px-3 py-1 mb-4">
+          <div ref={stackRef}>
+            <StackCard index={0} total={PROOF_TOTAL} progress={stackProgress} slotClassName="h-[52vh] min-h-[420px]" className="grid sm:grid-cols-2 gap-6 w-full">
+              <SpotlightPanel className="rounded-2xl shadow-xl h-full" tint="white">
+                <div style={{ background: "var(--gradient-quantum)" }} className="rounded-2xl p-8 h-full text-primary-foreground flex flex-col">
+                  <span className="inline-block w-fit text-[10px] font-bold uppercase tracking-wider bg-white/20 rounded-full px-3 py-1 mb-4">
                     Featured App
                   </span>
-                  <h3 className="font-display text-xl font-semibold mb-2">Quantum Assistant</h3>
-                  <p className="text-sm text-white/85 leading-relaxed">
+                  <h3 className="font-display text-2xl font-semibold mb-3">Quantum Assistant</h3>
+                  <p className="text-sm text-white/85 leading-relaxed mb-4">
                     A voice first daily planner, live on the Play Store. Built by the same person teaching you to
                     automate.
                   </p>
-                  <Link to="/quantum-assistant" className="inline-block mt-4 text-sm font-semibold underline underline-offset-4">
-                    View product →
+                  <Link to="/quantum-assistant" className="group inline-block mt-auto w-fit text-sm font-semibold underline underline-offset-4">
+                    View product <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
                   </Link>
                 </div>
-              </TiltCard>
-            </Reveal>
+              </SpotlightPanel>
 
-            <Reveal delay={100} className="lg:col-span-2">
-              <TiltCard className="rounded-2xl border border-border bg-card p-7 h-full">
-                <span className="inline-block text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 rounded-full px-3 py-1 mb-4">
+              <TiltCard className="rounded-2xl border border-border bg-card shadow-xl p-8 h-full flex flex-col">
+                <span className="inline-block w-fit text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 rounded-full px-3 py-1 mb-4">
                   rezoome.in
                 </span>
-                <h3 className="font-display text-xl font-semibold mb-2">ATS Resume Optimizer</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
+                <h3 className="font-display text-2xl font-semibold mb-3">ATS Resume Optimizer</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-4">
                   A tailor made AI resume engine that optimizes your profile against ATS systems and specific job
                   descriptions in seconds.
                 </p>
-                <Link to="/ats-resume-optimizer" className="inline-block mt-4 text-sm font-semibold text-primary underline underline-offset-4">
-                  View product →
+                <Link to="/ats-resume-optimizer" className="group inline-block mt-auto w-fit text-sm font-semibold text-primary underline underline-offset-4">
+                  View product <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
                 </Link>
               </TiltCard>
-            </Reveal>
+            </StackCard>
 
-            <Reveal delay={200}>
-              <TiltCard className="rounded-2xl border border-border bg-card p-7 h-full">
-                <span className="inline-block text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 rounded-full px-3 py-1 mb-4">
+            <StackCard index={1} total={PROOF_TOTAL} progress={stackProgress} slotClassName="h-[48vh] min-h-[380px]" className="grid sm:grid-cols-2 gap-6 w-full">
+              <TiltCard className="rounded-2xl border border-border bg-card shadow-xl p-8 h-full flex flex-col">
+                <span className="inline-block w-fit text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 rounded-full px-3 py-1 mb-4">
                   B2B Automation
                 </span>
-                <h3 className="font-display text-lg font-semibold mb-2">FM &amp; CRE Workflows</h3>
+                <h3 className="font-display text-xl font-semibold mb-3">FM &amp; CRE Workflows</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   Procurement, assets, travel, and lease abstraction, implemented for real operators.
                 </p>
               </TiltCard>
-            </Reveal>
 
-            <Reveal delay={300}>
-              <TiltCard className="rounded-2xl border border-border bg-card p-7 h-full">
-                <span className="inline-block text-[10px] font-bold uppercase tracking-wider text-secondary bg-secondary/10 rounded-full px-3 py-1 mb-4">
+              <TiltCard className="rounded-2xl border border-border bg-card shadow-xl p-8 h-full flex flex-col">
+                <span className="inline-block w-fit text-[10px] font-bold uppercase tracking-wider text-secondary bg-secondary/10 rounded-full px-3 py-1 mb-4">
                   B2B Automation
                 </span>
-                <h3 className="font-display text-lg font-semibold mb-2">WhatsApp CRM &amp; RAG</h3>
+                <h3 className="font-display text-xl font-semibold mb-3">WhatsApp CRM &amp; RAG</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   Ticketing, SOP bots, and contract search, or let me build it for your team.
                 </p>
               </TiltCard>
-            </Reveal>
+            </StackCard>
           </div>
         </div>
       </section>
@@ -182,21 +199,23 @@ const Home = () => {
       <section className="py-24 px-4 bg-card/40 border-y border-border">
         <div className="container max-w-6xl mx-auto grid lg:grid-cols-2 gap-14 items-center">
           <Reveal from="left">
-            <div className="rounded-2xl border border-border bg-card p-8">
-              {[
-                { n: "01", t: "Foundation Building", d: "Levels 0 and 1, from curiosity to first working automation" },
-                { n: "02", t: "Automation with AI", d: "Level 2, where repetitive tasks become smart workflows" },
-                { n: "03", t: "Build Real Automation", d: "Turn ideas into working, deployed AI powered apps" },
-              ].map((lvl, i, arr) => (
-                <div key={lvl.n} className={`flex items-center gap-4 py-3 ${i < arr.length - 1 ? "border-b border-border" : ""}`}>
-                  <span className="font-display font-bold text-xl text-primary w-8 shrink-0">{lvl.n}</span>
-                  <div>
-                    <div className="text-sm font-semibold">{lvl.t}</div>
-                    <div className="text-xs text-muted-foreground">{lvl.d}</div>
+            <SpotlightPanel className="rounded-2xl border border-border bg-card" tint="primary">
+              <div className="p-8">
+                {[
+                  { n: "01", t: "Foundation Building", d: "Levels 0 and 1, from curiosity to first working automation" },
+                  { n: "02", t: "Automation with AI", d: "Level 2, where repetitive tasks become smart workflows" },
+                  { n: "03", t: "Build Real Automation", d: "Turn ideas into working, deployed AI powered apps" },
+                ].map((lvl, i, arr) => (
+                  <div key={lvl.n} className={`flex items-center gap-4 py-3 ${i < arr.length - 1 ? "border-b border-border" : ""}`}>
+                    <span className="font-display font-bold text-xl text-primary w-8 shrink-0">{lvl.n}</span>
+                    <div>
+                      <div className="text-sm font-semibold">{lvl.t}</div>
+                      <div className="text-xs text-muted-foreground">{lvl.d}</div>
+                    </div>
                   </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            </SpotlightPanel>
           </Reveal>
 
           <Reveal from="right" delay={120}>
@@ -253,8 +272,8 @@ const Home = () => {
               </TiltCard>
             </Reveal>
           </div>
-          <Link to="/solutions/fm-ops" className="text-sm font-semibold text-primary underline underline-offset-4">
-            See how we solve your specific operational headache →
+          <Link to="/solutions/fm-ops" className="group text-sm font-semibold text-primary underline underline-offset-4">
+            See how we solve your specific operational headache <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
           </Link>
         </div>
       </section>
@@ -263,25 +282,28 @@ const Home = () => {
       <section className="py-24 px-4 bg-card/40 border-t border-border">
         <div className="container max-w-6xl mx-auto">
           <Reveal>
-            <div className="rounded-2xl border border-border bg-card p-8 flex flex-col sm:flex-row items-center gap-8">
-              <img
-                src={headshot}
-                alt={SITE.founderName}
-                className="w-32 h-32 rounded-full object-cover object-top shrink-0 border-4 border-background shadow-md"
-              />
-              <div>
-                <h3 className="font-display text-xl font-semibold">{SITE.founderName}</h3>
-                <p className="text-xs text-muted-foreground mb-3">{SITE.founderTitle}, AI for Facility Management &amp; Real Estate</p>
-                <p className="text-sm text-muted-foreground leading-relaxed max-w-lg mb-4">
-                  With 16 years in Facility Management and Corporate Real Estate, and 100+ AI knowledge sessions
-                  delivered to an active community of 10,000+ industry leaders, I operate on a single core
-                  principle: technology must deliver measurable operational and financial ROI.
-                </p>
-                <Link to="/about" className="text-sm font-semibold text-primary underline underline-offset-4">
-                  Read the full story →
-                </Link>
+            <SpotlightPanel className="rounded-2xl border border-border bg-card">
+              <div className="p-8 flex flex-col sm:flex-row items-center gap-8">
+                <ImageReveal
+                  src={headshot}
+                  alt={SITE.founderName}
+                  className="w-32 h-32 rounded-full shrink-0 border-4 border-background shadow-md"
+                  imgClassName="w-full h-full object-cover object-top"
+                  rounded="9999px"
+                />
+                <div>
+                  <h3 className="font-display text-xl font-semibold">{SITE.founderName}</h3>
+                  <p className="text-xs text-muted-foreground mb-3">{SITE.founderTitle}, AI for Facility Management &amp; Real Estate</p>
+                  <ScrollRevealText
+                    text="With 16 years in Facility Management and Corporate Real Estate, and 100+ AI knowledge sessions delivered to an active community of 10,000+ industry leaders, I operate on a single core principle: technology must deliver measurable operational and financial ROI."
+                    className="text-sm text-muted-foreground leading-relaxed max-w-lg mb-4"
+                  />
+                  <Link to="/about" className="group text-sm font-semibold text-primary underline underline-offset-4">
+                    Read the full story <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
+                  </Link>
+                </div>
               </div>
-            </div>
+            </SpotlightPanel>
           </Reveal>
         </div>
       </section>

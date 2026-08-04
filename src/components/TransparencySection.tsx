@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ShieldCheck, RotateCcw, Zap } from "lucide-react";
+import { SpotlightPanel } from "@/lib/motion";
 
 const cards = [
   {
@@ -42,20 +43,21 @@ const TransparencySection = () => {
 
         <div className="grid md:grid-cols-3 gap-6">
           {cards.map((c, i) => (
-            <motion.div
-              key={c.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.12, duration: 0.5 }}
-              className="glass-card p-6"
-            >
-              <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-4">
-                <c.icon className="w-6 h-6 text-accent" />
-              </div>
-              <h3 className="text-lg font-semibold mb-2 text-foreground">{c.title}</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">{c.description}</p>
-            </motion.div>
+            <SpotlightPanel key={c.title} className="glass-card">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.12, duration: 0.5 }}
+                className="p-6"
+              >
+                <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-4">
+                  <c.icon className="w-6 h-6 text-accent" />
+                </div>
+                <h3 className="text-lg font-semibold mb-2 text-foreground">{c.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{c.description}</p>
+              </motion.div>
+            </SpotlightPanel>
           ))}
         </div>
       </div>

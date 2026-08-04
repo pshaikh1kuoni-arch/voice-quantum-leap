@@ -1,6 +1,6 @@
 import { SiteNavbar } from "@/components/SiteNavbar";
 import { SiteFooter } from "@/components/SiteFooter";
-import { Reveal, TiltCard } from "@/lib/motion";
+import { Reveal, TiltCard, Magnetic, ImageReveal } from "@/lib/motion";
 import { SITE } from "@/lib/site-config";
 import rezoomeShot from "@/assets/rezoome-screenshot.png";
 
@@ -21,28 +21,36 @@ const AtsResumeOptimizer = () => {
             <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-secondary bg-secondary/10 border border-secondary/25 rounded-full px-4 py-1.5 mb-6">
               rezoome.in
             </span>
-            <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold mb-5">ATS Resume Optimizer</h1>
+            <h1 className="font-display text-page-display font-semibold mb-5">ATS Resume Optimizer</h1>
             <p className="text-muted-foreground text-lg mb-6 leading-relaxed">
               Built for job seekers, job switchers, and anyone ready to move up. Bring any resume you already have,
               and we turn it into an ATS proof, tailor made version built around the job you actually want, plus an
               application tracker to keep it all organized.
             </p>
             <div className="flex items-center gap-4 flex-wrap">
-              <a
-                href={SITE.rezoomeUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-xl px-6 py-3 font-semibold text-sm text-primary-foreground glow-teal"
-                style={{ background: "var(--gradient-quantum)" }}
-              >
-                Launch ATS Resume Engine ↗
-              </a>
+              <Magnetic>
+                <a
+                  href={SITE.rezoomeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center justify-center rounded-xl px-6 py-3 font-semibold text-sm text-primary-foreground glow-teal"
+                  style={{ background: "var(--gradient-quantum)" }}
+                >
+                  Launch ATS Resume Engine
+                  <span className="inline-block ml-1.5 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">↗</span>
+                </a>
+              </Magnetic>
               <span className="text-sm text-muted-foreground">Starting at ₹49, one of the most affordable tools of its kind.</span>
             </div>
           </Reveal>
-          <Reveal from="right" delay={100}>
-            <img src={rezoomeShot} alt="ATS Resume Optimizer, rezoome.in" className="rounded-xl border border-border shadow-lg w-full" />
-          </Reveal>
+          <ImageReveal
+            src={rezoomeShot}
+            alt="ATS Resume Optimizer, rezoome.in"
+            className="rounded-xl border border-border shadow-lg w-full"
+            imgClassName="w-full"
+            rounded="0.75rem"
+            delay={0.1}
+          />
         </div>
       </section>
 

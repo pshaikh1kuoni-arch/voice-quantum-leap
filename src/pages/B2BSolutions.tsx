@@ -1,7 +1,7 @@
 import { SiteNavbar } from "@/components/SiteNavbar";
 import { SiteFooter } from "@/components/SiteFooter";
 import { EmailCopyButton } from "@/components/EmailCopyButton";
-import { Reveal, TiltCard } from "@/lib/motion";
+import { Reveal, TiltCard, SpotlightPanel } from "@/lib/motion";
 import { LayoutDashboard, ScanText, Leaf, Building2, Database, MessageSquareText } from "lucide-react";
 
 const AUTOMATIONS = [
@@ -78,7 +78,7 @@ const B2BSolutions = () => {
             <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 border border-primary/25 rounded-full px-4 py-1.5 mb-6">
               B2B Solutions
             </span>
-            <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold mb-5 max-w-2xl">
+            <h1 className="font-display text-page-display font-semibold mb-5 max-w-2xl">
               Full spectrum FM automation and WhatsApp CRM intelligence
             </h1>
             <p className="text-lg italic text-foreground/80 max-w-xl">
@@ -131,16 +131,18 @@ const B2BSolutions = () => {
           <div className="grid sm:grid-cols-2 gap-6">
             {PILLAR_1.map((group, i) => (
               <Reveal key={group.title} delay={i * 80}>
-                <div className="rounded-2xl border border-border bg-card p-6 h-full">
-                  <h3 className="font-display font-semibold mb-3">{group.title}</h3>
-                  <ul className="flex flex-col gap-3">
-                    {group.items.map((item) => (
-                      <li key={item.t} className="text-sm text-muted-foreground leading-relaxed">
-                        <span className="text-foreground font-medium">{item.t}.</span> {item.d}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                <SpotlightPanel className="rounded-2xl border border-border bg-card h-full">
+                  <div className="p-6">
+                    <h3 className="font-display font-semibold mb-3">{group.title}</h3>
+                    <ul className="flex flex-col gap-3">
+                      {group.items.map((item) => (
+                        <li key={item.t} className="text-sm text-muted-foreground leading-relaxed">
+                          <span className="text-foreground font-medium">{item.t}.</span> {item.d}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </SpotlightPanel>
               </Reveal>
             ))}
           </div>
@@ -160,16 +162,18 @@ const B2BSolutions = () => {
           <div className="grid sm:grid-cols-2 gap-6">
             {PILLAR_2.map((group, i) => (
               <Reveal key={group.title} delay={i * 80}>
-                <div className="rounded-2xl border border-border bg-card p-6 h-full">
-                  <h3 className="font-display font-semibold mb-3">{group.title}</h3>
-                  <ul className="flex flex-col gap-3">
-                    {group.items.map((item) => (
-                      <li key={item.t} className="text-sm text-muted-foreground leading-relaxed">
-                        <span className="text-foreground font-medium">{item.t}.</span> {item.d}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
+                <SpotlightPanel className="rounded-2xl border border-border bg-card h-full">
+                  <div className="p-6">
+                    <h3 className="font-display font-semibold mb-3">{group.title}</h3>
+                    <ul className="flex flex-col gap-3">
+                      {group.items.map((item) => (
+                        <li key={item.t} className="text-sm text-muted-foreground leading-relaxed">
+                          <span className="text-foreground font-medium">{item.t}.</span> {item.d}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </SpotlightPanel>
               </Reveal>
             ))}
           </div>

@@ -37,14 +37,14 @@ export function SiteFooter() {
 
           <div className="flex flex-col gap-3 text-sm">
             <h4 className="font-mono text-xs uppercase tracking-wider text-muted-foreground mb-1">Elsewhere</h4>
-            <a href={SITE.playStoreUrl} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
-              Quantum Assistant on the Play Store ↗
+            <a href={SITE.playStoreUrl} target="_blank" rel="noopener noreferrer" className="group text-muted-foreground hover:text-primary transition-colors">
+              Quantum Assistant on the Play Store <span className="inline-block transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
             </a>
-            <a href={SITE.rezoomeUrl} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
-              rezoome.in ↗
+            <a href={SITE.rezoomeUrl} target="_blank" rel="noopener noreferrer" className="group text-muted-foreground hover:text-primary transition-colors">
+              rezoome.in <span className="inline-block transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
             </a>
-            <a href={SITE.linkedin} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
-              LinkedIn ↗
+            <a href={SITE.linkedin} target="_blank" rel="noopener noreferrer" className="group text-muted-foreground hover:text-primary transition-colors">
+              LinkedIn <span className="inline-block transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">↗</span>
             </a>
           </div>
         </div>

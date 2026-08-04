@@ -91,6 +91,23 @@
     @apply bg-clip-text text-transparent;
     background-image: var(--gradient-quantum);
   }
+  /* Fluid display type: scales smoothly between breakpoints instead of jumping. */
+  .text-hero-display {
+    font-size: clamp(2.25rem, 1.4rem + 3.7vw, 3.75rem);
+  }
+  .text-page-display {
+    font-size: clamp(1.875rem, 1.25rem + 2.8vw, 3rem);
+  }
+  /* Fixed, opacity-only texture overlay: no hues, just tactile grain. */
+  .grain-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.035;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
   .quantum-star {
     @apply inline-block;
     filter: drop-shadow(0 0 6px hsl(258 90% 66% / 0.5));

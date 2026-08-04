@@ -13,7 +13,7 @@ const Contact = () => {
       <section className="pt-28 pb-24 px-4">
         <div className="container max-w-2xl mx-auto text-center">
           <Reveal>
-            <h1 className="font-display text-3xl sm:text-4xl font-semibold mb-4">Let's talk</h1>
+            <h1 className="font-display text-page-display font-semibold mb-4">Let's talk</h1>
             <p className="text-muted-foreground text-lg mb-10 leading-relaxed">
               Training, B2B automation, product support, whatever brought you here, send me your email and I'll
               reply personally.

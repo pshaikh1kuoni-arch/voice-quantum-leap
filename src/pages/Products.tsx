@@ -16,7 +16,7 @@ const Products = () => {
             <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 border border-primary/25 rounded-full px-4 py-1.5 mb-6">
               Proof, Not Just Theory
             </span>
-            <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-semibold mb-5">Products I've built and shipped</h1>
+            <h1 className="font-display text-page-display font-semibold mb-5">Products I've built and shipped</h1>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
               Two live products, both built by the same person teaching you to automate. Not side projects, proof.
             </p>
@@ -27,7 +27,7 @@ const Products = () => {
       <section className="pb-24 px-4">
         <div className="container max-w-5xl mx-auto grid sm:grid-cols-2 gap-8">
           <Reveal>
-            <Link to="/quantum-assistant">
+            <Link to="/quantum-assistant" className="group block h-full">
               <TiltCard className="rounded-2xl border border-border bg-card overflow-hidden h-full">
                 <div className="p-8 flex flex-col h-full">
                   <img src={quantumLogo} alt="Quantum Assistant" className="w-16 h-16 object-contain mb-5" />
@@ -39,14 +39,16 @@ const Products = () => {
                     A voice first daily planner that replaces passive to do lists with an active execution workflow.
                     Live on the Play Store.
                   </p>
-                  <span className="mt-auto text-sm font-semibold text-primary">View product →</span>
+                  <span className="mt-auto text-sm font-semibold text-primary">
+                    View product <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
+                  </span>
                 </div>
               </TiltCard>
             </Link>
           </Reveal>
 
           <Reveal delay={100}>
-            <Link to="/ats-resume-optimizer">
+            <Link to="/ats-resume-optimizer" className="group block h-full">
               <TiltCard className="rounded-2xl border border-border bg-card overflow-hidden h-full">
                 <div className="p-8 flex flex-col h-full">
                   <img src={rezoomeShot} alt="ATS Resume Optimizer" className="w-full rounded-lg border border-border mb-5" />
@@ -58,7 +60,9 @@ const Products = () => {
                     An ATS proof, tailor made resume and application tracker built for anyone job hunting or ready
                     to move up.
                   </p>
-                  <span className="mt-auto text-sm font-semibold text-primary">View product →</span>
+                  <span className="mt-auto text-sm font-semibold text-primary">
+                    View product <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
+                  </span>
                 </div>
               </TiltCard>
             </Link>

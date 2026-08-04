@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Mic, BarChart3, Calendar, MessageSquareReply, Target, Gauge } from "lucide-react";
+import { SpotlightPanel } from "@/lib/motion";
 
 const features = [
   {
@@ -74,17 +75,15 @@ const FeaturesSection = () => {
           className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {features.map((f) => (
-            <motion.div
-              key={f.title}
-              variants={cardVariants}
-              className="glass-card p-6 group hover:border-primary/40 transition-colors"
-            >
-              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:glow-teal transition-shadow">
-                <f.icon className="w-6 h-6 text-primary" />
-              </div>
-              <h3 className="text-lg font-semibold mb-2 text-foreground">{f.title}</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">{f.description}</p>
-            </motion.div>
+            <SpotlightPanel key={f.title} className="glass-card hover:border-primary/40 transition-colors">
+              <motion.div variants={cardVariants} className="p-6">
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:glow-teal transition-shadow">
+                  <f.icon className="w-6 h-6 text-primary" />
+                </div>
+                <h3 className="text-lg font-semibold mb-2 text-foreground">{f.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{f.description}</p>
+              </motion.div>
+            </SpotlightPanel>
           ))}
         </motion.div>
       </div>

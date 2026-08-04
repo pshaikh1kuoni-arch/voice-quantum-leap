@@ -1,7 +1,7 @@
 import { SiteNavbar } from "@/components/SiteNavbar";
 import { SiteFooter } from "@/components/SiteFooter";
 import { EmailCopyButton } from "@/components/EmailCopyButton";
-import { Reveal, ScrollProgress } from "@/lib/motion";
+import { Reveal, ScrollProgress, ImageReveal, ScrollRevealText, SpotlightPanel } from "@/lib/motion";
 import { SITE } from "@/lib/site-config";
 import gacs1 from "@/assets/gacs/session-1-foundation-building.png";
 import gacs2 from "@/assets/gacs/session-2-automation-with-ai.png";
@@ -42,15 +42,15 @@ const About = () => {
       {/* Hero */}
       <section className="pt-24 pb-16 px-4">
         <div className="container max-w-5xl mx-auto flex flex-col sm:flex-row items-center gap-8">
-          <Reveal from="left">
-            <img
-              src={headshot}
-              alt={SITE.founderName}
-              className="w-40 h-40 rounded-full object-cover object-top shrink-0 border-4 border-card shadow-lg"
-            />
-          </Reveal>
+          <ImageReveal
+            src={headshot}
+            alt={SITE.founderName}
+            className="w-40 h-40 rounded-full shrink-0 border-4 border-card shadow-lg"
+            imgClassName="w-full h-full object-cover object-top"
+            rounded="9999px"
+          />
           <Reveal from="right" delay={100}>
-            <h1 className="font-display text-3xl sm:text-4xl font-semibold mb-2">{SITE.founderName}</h1>
+            <h1 className="font-display text-page-display font-semibold mb-2">{SITE.founderName}</h1>
             <p className="text-muted-foreground">{SITE.founderTitle}, AI for Facility Management &amp; Real Estate</p>
           </Reveal>
         </div>
@@ -72,9 +72,7 @@ const About = () => {
             `That obsession came with a mix of optimism and healthy skepticism. I could see how much this technology could give back to people who understood it, and how easily it could leave behind those who didn't, especially in an industry like facility management and corporate real estate that's about to change more than most people realize.`,
             `That's the reason I started teaching. Not because I had all the answers, but because I'd rather take the responsibility to help people learn and benefit from this shift now, than watch them get left behind later.`,
           ].map((para, i) => (
-            <Reveal key={i} delay={i * 60}>
-              <p className="text-muted-foreground leading-relaxed mb-5 text-[15px]">{para}</p>
-            </Reveal>
+            <ScrollRevealText key={i} text={para} className="text-muted-foreground leading-relaxed mb-5 text-[15px]" />
           ))}
         </div>
       </section>
@@ -100,10 +98,10 @@ const About = () => {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
             {SESSION_PHOTOS.map((s, i) => (
               <Reveal key={s.caption} delay={i * 70}>
-                <div className="rounded-2xl border border-border bg-card overflow-hidden h-full">
+                <SpotlightPanel className="rounded-2xl border border-border bg-card h-full">
                   <img src={s.img} alt={s.caption} className="w-full aspect-square object-cover" />
                   <div className="p-4 text-xs text-muted-foreground">{s.caption}</div>
-                </div>
+                </SpotlightPanel>
               </Reveal>
             ))}
           </div>

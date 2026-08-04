@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Magnetic } from "@/lib/motion";
 import quantumLogo from "@/assets/quantum-logo.png";
 
 const HeroSection = () => {
@@ -19,7 +20,7 @@ const HeroSection = () => {
           transition={{ duration: 0.7 }}
           className="text-center md:text-left"
         >
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-6">
+          <h1 className="text-hero-display font-bold leading-tight tracking-tight mb-6">
             <span className="gradient-text">Quantum Assistant</span>
             <br />
             <span className="text-foreground">Your Voice-First Productivity OS.</span>
@@ -28,14 +29,16 @@ const HeroSection = () => {
             Stop typing, start doing. The first Android experience where a single voice command manages your entire professional lifecycle.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-            <a
-              href="https://play.google.com/store/apps/details?id=com.quantum.assistant"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center rounded-full px-8 py-3.5 font-semibold text-primary-foreground bg-primary glow-teal transition-transform hover:scale-105"
-            >
-              Download Now
-            </a>
+            <Magnetic>
+              <a
+                href="https://play.google.com/store/apps/details?id=com.quantum.assistant"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center rounded-full px-8 py-3.5 font-semibold text-primary-foreground bg-primary glow-teal transition-transform hover:scale-105"
+              >
+                Download Now
+              </a>
+            </Magnetic>
             <a
               href="#features"
               className="inline-flex items-center justify-center rounded-full px-8 py-3.5 font-semibold border border-glass text-foreground backdrop-blur-sm transition-transform hover:scale-105 hover:border-primary/50"

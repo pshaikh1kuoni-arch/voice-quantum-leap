@@ -7,19 +7,30 @@ import logo from "@/assets/jsm-nexus-logo.png";
 
 export function SiteNavbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", handler);
+    let lastY = window.scrollY;
+    const handler = () => {
+      const y = window.scrollY;
+      setScrolled(y > 20);
+      // Only hide once past the hero, and ignore tiny jitters so the bar
+      // doesn't flicker on trackpad micro-scrolls.
+      if (Math.abs(y - lastY) > 6) {
+        setHidden(y > lastY && y > 120);
+        lastY = y;
+      }
+    };
+    window.addEventListener("scroll", handler, { passive: true });
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
   return (
     <header
-      className={`sticky top-0 z-50 transition-colors duration-300 ${
+      className={`sticky top-0 z-50 transition-[background-color,border-color,transform] duration-300 ${
         scrolled ? "bg-background/85 backdrop-blur-xl border-b border-border" : "bg-transparent"
-      }`}
+      } ${hidden && !open ? "-translate-y-full" : "translate-y-0"}`}
     >
       <nav className="container max-w-6xl mx-auto flex items-center justify-between py-3 px-4">
         <Link to="/" className="flex items-center gap-2.5 shrink-0">
