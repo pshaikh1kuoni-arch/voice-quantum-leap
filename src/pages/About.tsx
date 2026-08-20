@@ -1,20 +1,10 @@
+import { Link } from "react-router-dom";
 import { SiteNavbar } from "@/components/SiteNavbar";
 import { SiteFooter } from "@/components/SiteFooter";
 import { EmailCopyButton } from "@/components/EmailCopyButton";
-import { Reveal, ScrollProgress, ImageReveal, ScrollRevealText, SpotlightPanel } from "@/lib/motion";
+import { Reveal, ScrollProgress, ImageReveal, ScrollRevealText, Magnetic } from "@/lib/motion";
 import { SITE } from "@/lib/site-config";
-import gacs1 from "@/assets/gacs/session-1-foundation-building.png";
-import gacs2 from "@/assets/gacs/session-2-automation-with-ai.png";
-import gacs3 from "@/assets/gacs/session-3-build-real-automation.png";
-import salamBombay from "@/assets/salam-bombay.jpg";
 import headshot from "@/assets/parvez-shaikh-headshot.png";
-
-const SESSION_PHOTOS = [
-  { img: gacs1, caption: "GACS, Session 1: Foundation Building" },
-  { img: gacs2, caption: "GACS, Session 2: Automation with AI" },
-  { img: gacs3, caption: "GACS, Session 3: Build Real Automation" },
-  { img: salamBombay, caption: "Salam Bombay NGO, community knowledge session" },
-];
 
 const OTHER_INSTITUTIONS = ["Marsh (McLennan)", "Reliance", "Tata Motors", "Tata Steel", "Zaggle", "NIQ", "GroupM"];
 
@@ -87,25 +77,24 @@ const About = () => {
             <h2 className="font-display text-2xl sm:text-3xl font-semibold mb-3">
               100+ AI knowledge sessions delivered
             </h2>
-            <p className="text-muted-foreground max-w-2xl mb-10">
+            <p className="text-muted-foreground max-w-2xl mb-8">
               We work with corporate leaders and facility teams to elevate their daily productivity, replace
               manual drag with automated workflows, and build sharp decision making confidence. Alongside
               corporate upskilling, we actively partner with the Salaam Bombay Foundation to empower students
               from underserved communities with practical AI skills, helping them unlock new income
               opportunities and build brighter futures.
             </p>
+            <Magnetic>
+              <Link
+                to="/sessions"
+                className="inline-flex items-center justify-center rounded-xl px-6 py-3 font-semibold text-sm text-primary-foreground glow-teal transition-transform hover:-translate-y-0.5"
+                style={{ background: "var(--gradient-quantum)" }}
+              >
+                View all sessions <span className="ml-1">→</span>
+              </Link>
+            </Magnetic>
           </Reveal>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
-            {SESSION_PHOTOS.map((s, i) => (
-              <Reveal key={s.caption} delay={i * 70}>
-                <SpotlightPanel className="rounded-2xl border border-border bg-card h-full">
-                  <img src={s.img} alt={s.caption} className="w-full aspect-square object-cover" />
-                  <div className="p-4 text-xs text-muted-foreground">{s.caption}</div>
-                </SpotlightPanel>
-              </Reveal>
-            ))}
-          </div>
-          <Reveal delay={200}>
+          <Reveal delay={150} className="mt-10">
             <p className="text-xs text-muted-foreground mb-3">
               Leaders from several Fortune 500 companies have also joined these sessions individually, including:
             </p>

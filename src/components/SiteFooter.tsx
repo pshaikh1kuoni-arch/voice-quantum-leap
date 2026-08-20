@@ -22,6 +22,7 @@ export function SiteFooter() {
           <div className="flex flex-col gap-3 text-sm">
             <h4 className="font-mono text-xs uppercase tracking-wider text-muted-foreground mb-1">Navigate</h4>
             <Link to="/about" className="text-muted-foreground hover:text-primary transition-colors">About</Link>
+            <Link to="/sessions" className="text-muted-foreground hover:text-primary transition-colors">Sessions</Link>
             <Link to="/products" className="text-muted-foreground hover:text-primary transition-colors">Products</Link>
             <Link to="/solutions/fm-ops" className="text-muted-foreground hover:text-primary transition-colors">B2B Automations</Link>
             <Link to="/contact" className="text-muted-foreground hover:text-primary transition-colors">Contact</Link>

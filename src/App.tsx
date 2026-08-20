@@ -8,6 +8,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { usePrefersReducedMotion } from "@/lib/motion";
 import Home from "./pages/Home.tsx";
 import About from "./pages/About.tsx";
+import Sessions from "./pages/Sessions.tsx";
 import Academy from "./pages/Academy.tsx";
 import B2BSolutions from "./pages/B2BSolutions.tsx";
 import Products from "./pages/Products.tsx";
@@ -57,6 +58,7 @@ const AnimatedRoutes = () => {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<PageTransition><Home /></PageTransition>} />
         <Route path="/about" element={<PageTransition><About /></PageTransition>} />
+        <Route path="/sessions" element={<PageTransition><Sessions /></PageTransition>} />
         <Route path="/academy" element={<PageTransition><Academy /></PageTransition>} />
         <Route path="/solutions/fm-ops" element={<PageTransition><B2BSolutions /></PageTransition>} />
         <Route path="/products" element={<PageTransition><Products /></PageTransition>} />

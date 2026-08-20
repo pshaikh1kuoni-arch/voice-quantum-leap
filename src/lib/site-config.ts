@@ -12,6 +12,7 @@ export const SITE = {
 
 export const NAV_LINKS = [
   { label: "About", href: "/about" },
+  { label: "Sessions", href: "/sessions" },
   { label: "AI Academy", href: "/academy" },
   { label: "Products", href: "/products" },
   { label: "B2B Automations", href: "/solutions/fm-ops" },
