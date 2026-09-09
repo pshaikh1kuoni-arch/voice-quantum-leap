@@ -13,9 +13,7 @@ export function SiteFooter() {
               <img src={logo} alt={SITE.brand} className="h-14 w-auto" />
             </Link>
             <p className="text-sm text-muted-foreground max-w-[260px]">
-              Eliminating daily operational drag in Real Estate and Facility Management. We build custom
-              automations and upskill teams so routine work becomes effortless, giving you back the time to focus
-              on growth.
+              Practical AI training and workflow automation for any industry, from execution teams to leadership.
             </p>
           </div>
 

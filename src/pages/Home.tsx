@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { SiteNavbar } from "@/components/SiteNavbar";
 import { SiteFooter } from "@/components/SiteFooter";
-import { EmailCopyButton } from "@/components/EmailCopyButton";
+import { ChooseYourPath } from "@/components/ChooseYourPath";
 import {
   Reveal,
   KineticText,
@@ -68,41 +68,33 @@ const Home = () => {
             </div>
 
             <div>
-              <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 border border-primary/25 rounded-full px-4 py-1.5 mb-7">
-                AI for Facility Management &amp; Real Estate
-              </span>
-
               <h1 className="font-display font-semibold text-hero-display leading-[1.12] mb-6">
-                <KineticText text="I teach the built environment" delay={0.25} />
+                <KineticText text="I teach organizations how to use AI," delay={0.25} />
                 <br />
                 <span className="italic gradient-text">
-                  <KineticText text="to use AI." delay={0.65} />
+                  <KineticText text="and I build the automation that proves it works" delay={0.65} />
                 </span>
               </h1>
 
               <p className="text-muted-foreground text-lg max-w-xl mb-9 leading-relaxed">
-                I don't just teach tools. I help people build a completely new way of working. My mission is to
-                give Real Estate and Facility Management professionals the freedom to step away from manual
-                routines, look at data with fresh eyes, and deliver high quality work much faster. When work stops
-                being a constant grind, you don't just get better results. You reclaim the time and space you need
-                to grow as a person and as a leader.
+                Practical AI training and workflow automation for any industry, from execution teams to leadership.
               </p>
 
               <div className="flex flex-wrap gap-4">
                 <Magnetic>
-                  <Link
-                    to="/academy"
+                  <a
+                    href="#what-i-do"
                     className="inline-flex items-center justify-center rounded-xl px-6 py-3 font-semibold text-sm text-primary-foreground glow-teal transition-transform hover:-translate-y-0.5"
                     style={{ background: "var(--gradient-quantum)" }}
                   >
-                    Explore AI Academy
-                  </Link>
+                    See how I can help your team
+                  </a>
                 </Magnetic>
                 <a
-                  href="#proof"
+                  href="#fm-track"
                   className="inline-flex items-center justify-center rounded-xl px-6 py-3 font-semibold text-sm border border-border bg-card hover:border-primary/40 transition-colors"
                 >
-                  See what I've built
+                  Facility management and real estate specialist track
                 </a>
               </div>
             </div>
@@ -124,6 +116,120 @@ const Home = () => {
       </section>
 
       <Marquee items={MARQUEE_ITEMS} />
+
+      {/* Two pillars: What I do */}
+      <section id="what-i-do" className="py-24 px-4">
+        <div className="container max-w-6xl mx-auto">
+          <Reveal>
+            <h2 className="font-display text-3xl sm:text-4xl font-semibold mb-14">What I do</h2>
+          </Reveal>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <Reveal from="left">
+              <TiltCard className="rounded-2xl border border-border bg-card shadow-xl p-8 h-full flex flex-col">
+                <h3 className="font-display text-xl font-semibold mb-3">AI training and workshops</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-5">
+                  I teach every major AI tool in current use, organized by what a team actually needs to get done,
+                  not just the two or three names everyone already knows.
+                </p>
+                <ul className="flex flex-col gap-3 mb-5 text-sm text-muted-foreground">
+                  <li className="flex gap-2">
+                    <span className="text-primary">✦</span>
+                    <span>
+                      <strong className="text-foreground">Generative AI chat tools:</strong> ChatGPT, Gemini, Claude,
+                      Grok, and current open weight models such as DeepSeek and GLM
+                    </span>
+                  </li>
+                  <li className="flex gap-2">
+                    <span className="text-primary">✦</span>
+                    <span>
+                      <strong className="text-foreground">Prompt engineering and agentic AI:</strong> designing AI
+                      agents and agentic workflows using frameworks such as LangChain, n8n, and OpenClaw
+                    </span>
+                  </li>
+                  <li className="flex gap-2">
+                    <span className="text-primary">✦</span>
+                    <span>
+                      <strong className="text-foreground">Document intelligence and RAG:</strong> NotebookLM and
+                      retrieval augmented generation systems that turn a team's own SOPs, policies, and meeting
+                      notes into a searchable, accurate assistant
+                    </span>
+                  </li>
+                  <li className="flex gap-2">
+                    <span className="text-primary">✦</span>
+                    <span>
+                      <strong className="text-foreground">Vibe coding and AI app building:</strong> Claude Code,
+                      Cursor, Google Antigravity, and Replit, letting any team build small internal tools without
+                      writing code from scratch
+                    </span>
+                  </li>
+                  <li className="flex gap-2">
+                    <span className="text-primary">✦</span>
+                    <span>
+                      <strong className="text-foreground">AI video and image creation:</strong> HeyGen, Descript,
+                      and Higgsfield, for training material, presentations, and marketing content without a
+                      production budget
+                    </span>
+                  </li>
+                  <li className="flex gap-2">
+                    <span className="text-primary">✦</span>
+                    <span>
+                      <strong className="text-foreground">AI inside everyday work tools:</strong> Microsoft Copilot
+                      and similar assistants now built directly into Word, Excel, and PowerPoint
+                    </span>
+                  </li>
+                </ul>
+                <p className="text-sm italic text-muted-foreground border-t border-border pt-4 mt-auto">
+                  Delivered using real work from your own operations as the case study, not generic examples.
+                </p>
+              </TiltCard>
+            </Reveal>
+
+            <Reveal from="right" delay={100}>
+              <TiltCard className="rounded-2xl border border-border bg-card shadow-xl p-8 h-full flex flex-col">
+                <h3 className="font-display text-xl font-semibold mb-3">Business automation and workflow AI</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-5">
+                  Automation applied directly to your operations, using agentic AI frameworks such as LangChain,
+                  n8n, and OpenClaw, connected to the systems a team already uses. Over 500 business workflows
+                  automated to date, including procurement workflows, WhatsApp CRM, and RAG based SOP and contract
+                  search bots. Once it is built it runs with zero manual intervention, so the gains compound every
+                  day instead of depending on someone remembering to do the task.
+                </p>
+                <ul className="flex flex-col gap-3 text-sm text-muted-foreground">
+                  <li className="flex gap-2">
+                    <span className="text-primary">✦</span>
+                    <span>
+                      <strong className="text-foreground">Productivity:</strong> repeatable tasks such as data
+                      entry, reporting, and document extraction run on their own
+                    </span>
+                  </li>
+                  <li className="flex gap-2">
+                    <span className="text-primary">✦</span>
+                    <span>
+                      <strong className="text-foreground">Efficiency:</strong> fewer manual handoffs, faster
+                      turnaround, lower error rates
+                    </span>
+                  </li>
+                  <li className="flex gap-2">
+                    <span className="text-primary">✦</span>
+                    <span>
+                      <strong className="text-foreground">Decision making power:</strong> dashboards and agents
+                      that surface the right numbers before a meeting, not after
+                    </span>
+                  </li>
+                  <li className="flex gap-2">
+                    <span className="text-primary">✦</span>
+                    <span>
+                      <strong className="text-foreground">Strategy building:</strong> automation that frees senior
+                      time away from repetitive work and toward planning
+                    </span>
+                  </li>
+                </ul>
+              </TiltCard>
+            </Reveal>
+          </div>
+        </div>
+      </section>
 
       {/* Proof: I don't just teach it, I ship it */}
       <section id="proof" className="py-24 px-4">
@@ -195,95 +301,15 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Academy flagship program */}
-      <section className="py-24 px-4 bg-card/40 border-y border-border">
-        <div className="container max-w-6xl mx-auto grid lg:grid-cols-2 gap-14 items-center">
-          <Reveal from="left">
-            <SpotlightPanel className="rounded-2xl border border-border bg-card" tint="primary">
-              <div className="p-8">
-                {[
-                  { n: "01", t: "Foundation Building", d: "Levels 0 and 1, from curiosity to first working automation" },
-                  { n: "02", t: "Automation with AI", d: "Level 2, where repetitive tasks become smart workflows" },
-                  { n: "03", t: "Build Real Automation", d: "Turn ideas into working, deployed AI powered apps" },
-                ].map((lvl, i, arr) => (
-                  <div key={lvl.n} className={`flex items-center gap-4 py-3 ${i < arr.length - 1 ? "border-b border-border" : ""}`}>
-                    <span className="font-display font-bold text-xl text-primary w-8 shrink-0">{lvl.n}</span>
-                    <div>
-                      <div className="text-sm font-semibold">{lvl.t}</div>
-                      <div className="text-xs text-muted-foreground">{lvl.d}</div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </SpotlightPanel>
-          </Reveal>
+      <ChooseYourPath />
 
-          <Reveal from="right" delay={120}>
-            <span className="block font-mono text-xs font-semibold uppercase tracking-wider text-secondary mb-3">
-              AI Academy Flagship Program
-            </span>
-            <h2 className="font-display text-3xl sm:text-4xl font-semibold mb-4">A three level path, already field tested</h2>
-            <p className="text-muted-foreground leading-relaxed mb-5">
-              Built for Facility Management and Corporate Real Estate leaders, and open to any professional or
-              educator ready to move from curious to capable with AI.
-            </p>
-            <ul className="flex flex-col gap-3 mb-8 text-sm text-muted-foreground">
-              <li className="flex gap-2"><span className="text-primary">✦</span> Delivered as live knowledge sessions, most recently the GACS AI Transformation Masterclass</li>
-              <li className="flex gap-2"><span className="text-primary">✦</span> Also taught in community settings, including a Salam Bombay NGO session</li>
-              <li className="flex gap-2"><span className="text-primary">✦</span> Curious about a session for your team? Send your email and I'll get back to you personally</li>
-            </ul>
-            <EmailCopyButton label="Ask about a session" />
-          </Reveal>
-        </div>
-      </section>
-
-      {/* B2B teaser */}
-      <section className="py-24 px-4">
-        <div className="container max-w-6xl mx-auto">
-          <Reveal>
-            <span className="block font-mono text-xs font-semibold uppercase tracking-wider text-secondary mb-3">
-              Or, Let Me Build It For You
-            </span>
-            <h2 className="font-display text-3xl sm:text-4xl font-semibold mb-12 max-w-xl">
-              B2B automation for facility &amp; real estate operators
-            </h2>
-          </Reveal>
-          <div className="grid sm:grid-cols-2 gap-6 mb-10">
-            <Reveal>
-              <TiltCard className="rounded-2xl border border-border bg-card p-7 h-full">
-                <h3 className="font-display text-lg font-semibold mb-3">FM Operations, Leases, Approvals and More</h3>
-                <ul className="text-sm text-muted-foreground flex flex-col gap-3">
-                  <li>• Find exact lease terms, escalation dates, and penalty clauses without searching through 50 page PDFs</li>
-                  <li>• Track live building occupancy and space usage without relying on manual headcounts or spreadsheets</li>
-                  <li>• Compare vendor quotes side by side and approve purchase orders in minutes instead of chasing sign offs for days</li>
-                  <li>• Clear travel requests and multi tier manager approvals automatically so work never gets stalled</li>
-                </ul>
-              </TiltCard>
-            </Reveal>
-            <Reveal delay={100}>
-              <TiltCard className="rounded-2xl border border-border bg-card p-7 h-full">
-                <h3 className="font-display text-lg font-semibold mb-3">Daily Helpdesk &amp; Maintenance</h3>
-                <ul className="text-sm text-muted-foreground flex flex-col gap-3">
-                  <li>• Let staff and tenants log issues over chat and send automatic status updates straight to their phones</li>
-                  <li>• Ask questions directly to your building manuals to solve equipment breakdowns on the spot</li>
-                  <li>• Prevent maintenance requests from getting lost in email threads with automatic task routing to technicians</li>
-                  <li>• Get instant alerts before vendor contracts or service deadlines are breached</li>
-                </ul>
-              </TiltCard>
-            </Reveal>
-          </div>
-          <Link to="/solutions/fm-ops" className="group text-sm font-semibold text-primary underline underline-offset-4">
-            See how we solve your specific operational headache <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
-          </Link>
-        </div>
-      </section>
-
-      {/* About / founder strip */}
+      {/* About and proof */}
       <section className="py-24 px-4 bg-card/40 border-t border-border">
         <div className="container max-w-6xl mx-auto">
           <Reveal>
+            <h2 className="font-display text-3xl sm:text-4xl font-semibold mb-10">About and proof</h2>
             <SpotlightPanel className="rounded-2xl border border-border bg-card">
-              <div className="p-8 flex flex-col sm:flex-row items-center gap-8">
+              <div className="p-8 flex flex-col sm:flex-row items-start gap-8">
                 <ImageReveal
                   src={headshot}
                   alt={SITE.founderName}
@@ -293,17 +319,47 @@ const Home = () => {
                 />
                 <div>
                   <h3 className="font-display text-xl font-semibold">{SITE.founderName}</h3>
-                  <p className="text-xs text-muted-foreground mb-3">{SITE.founderTitle}, AI for Facility Management &amp; Real Estate</p>
+                  <p className="text-xs text-muted-foreground mb-3">{SITE.founderTitle}</p>
                   <ScrollRevealText
-                    text="With 16 years in Facility Management and Corporate Real Estate, and 100+ AI knowledge sessions delivered to an active community of 10,000+ industry leaders, I operate on a single core principle: technology must deliver measurable operational and financial ROI."
+                    text="Builds what he teaches. Has shipped production AI applications, including Quantum Assistant, a voice first daily planner live on the Play Store, and Rezoome.in, an AI powered resume optimizer, and has automated 500+ business workflows using generative AI, agentic AI, and RAG systems."
                     className="text-sm text-muted-foreground leading-relaxed max-w-lg mb-4"
                   />
+                  <p className="text-sm text-muted-foreground leading-relaxed max-w-lg mb-4">
+                    16 years in Facility Management and Workplace Operations, spanning Insurance and GCC, BFSI,
+                    Retail, Manufacturing, Logistics, and Travel. Past clients and employers include Marsh
+                    McLennan, JLL, Zaggle, Satin Finserv, LG Polymers, Bestseller Retail India, and Kuoni Travel
+                    India. That operational depth is why the automation holds up under real conditions, not just in
+                    a workshop room.
+                  </p>
+                  <p className="text-sm text-muted-foreground leading-relaxed max-w-lg mb-4">
+                    Delivered 100+ hands on training sessions to a working community of 10,000+ professionals
+                    across LinkedIn, WhatsApp, and YouTube Shorts, including leaders from Fortune 500 organizations
+                    such as Marsh McLennan, Reliance, Tata Motors, Tata Steel, KPMG, and GroupM.
+                  </p>
                   <Link to="/about" className="group text-sm font-semibold text-primary underline underline-offset-4">
                     Read the full story <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
                   </Link>
                 </div>
               </div>
             </SpotlightPanel>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section id="contact" className="py-24 px-4 text-center">
+        <div className="container max-w-2xl mx-auto">
+          <Reveal>
+            <h2 className="font-display text-3xl sm:text-4xl font-semibold mb-8">Connect to know more</h2>
+            <Magnetic>
+              <Link
+                to="/contact"
+                className="inline-flex items-center justify-center rounded-xl px-6 py-3 font-semibold text-sm text-primary-foreground glow-teal transition-transform hover:-translate-y-0.5"
+                style={{ background: "var(--gradient-quantum)" }}
+              >
+                Start a conversation
+              </Link>
+            </Magnetic>
           </Reveal>
         </div>
       </section>

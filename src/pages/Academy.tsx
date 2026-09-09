@@ -4,9 +4,9 @@ import { EmailCopyButton } from "@/components/EmailCopyButton";
 import { Reveal, KineticInView, SpotlightPanel } from "@/lib/motion";
 
 const LEVELS = [
-  { n: "01", t: "Foundation Building", d: "Levels 0 and 1, from curiosity to first working automation" },
-  { n: "02", t: "Automation with AI", d: "Level 2, where repetitive tasks become smart workflows" },
-  { n: "03", t: "Build Real Automation", d: "Turn ideas into working, deployed AI powered apps" },
+  { n: "01", t: "Awareness, for execution teams", d: "Learn to use AI tools daily, save time, and get more done." },
+  { n: "02", t: "Strategy, for middle management", d: "Build strong business cases and drive better ROI." },
+  { n: "03", t: "Leadership, for CXOs", d: "Monitor execution, review performance, and sharpen decision making." },
 ];
 
 const TRACKS = [
@@ -42,8 +42,8 @@ const Academy = () => {
               <KineticInView text="Corporate & institutional knowledge sessions in applied AI" />
             </h1>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Built for Facility Management &amp; Corporate Real Estate leaders, and open to any professional or
-              educator ready to move from curious to capable with AI.
+              Training and automation for any industry, or a specialist track built on 16 years inside facility
+              management and real estate.
             </p>
           </Reveal>
         </div>
@@ -75,6 +75,11 @@ const Academy = () => {
             <p className="text-xs text-muted-foreground mt-4">
               Most recently delivered as the GACS AI Transformation Masterclass, October to December 2025. Session
               flyers to follow.
+            </p>
+            <p className="text-sm text-muted-foreground mt-6 leading-relaxed">
+              Recently delivered for teams well outside facility management too, including KEP Engineering Services
+              Pvt Ltd, KPMG, Jana Small Finance Bank, and NIQ, spanning engineering, manufacturing, NBFC, and BFSI,
+              from execution teams through to leadership.
             </p>
           </Reveal>
         </div>
@@ -110,34 +115,6 @@ const Academy = () => {
               </Reveal>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Two audiences */}
-      <section className="py-14 px-4">
-        <div className="container max-w-4xl mx-auto grid sm:grid-cols-2 gap-6">
-          <Reveal from="left">
-            <SpotlightPanel className="rounded-2xl border border-border bg-card h-full">
-              <div className="p-6">
-                <h3 className="font-display font-semibold mb-2">Facility &amp; Real Estate Professionals</h3>
-                <p className="text-sm text-muted-foreground">
-                  Learn the same AI workflows I use to automate procurement, assets, leases, and vendor operations,
-                  from someone who's actually run these operations, not just studied them.
-                </p>
-              </div>
-            </SpotlightPanel>
-          </Reveal>
-          <Reveal from="right" delay={100}>
-            <SpotlightPanel className="rounded-2xl border border-border bg-card h-full">
-              <div className="p-6">
-                <h3 className="font-display font-semibold mb-2">Educators &amp; Corporate Professionals</h3>
-                <p className="text-sm text-muted-foreground">
-                  General AI upskilling for teams and educators ready to move beyond curiosity: foundations, tools,
-                  and safe, practical application.
-                </p>
-              </div>
-            </SpotlightPanel>
-          </Reveal>
         </div>
       </section>
 
