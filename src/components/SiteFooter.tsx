@@ -22,14 +22,14 @@ export function SiteFooter() {
             <Link to="/about" className="text-muted-foreground hover:text-primary transition-colors">About</Link>
             <Link to="/sessions" className="text-muted-foreground hover:text-primary transition-colors">Sessions</Link>
             <Link to="/products" className="text-muted-foreground hover:text-primary transition-colors">Products</Link>
-            <Link to="/solutions/fm-ops" className="text-muted-foreground hover:text-primary transition-colors">Automation</Link>
+            <Link to="/solutions/automation" className="text-muted-foreground hover:text-primary transition-colors">Automation</Link>
             <Link to="/contact" className="text-muted-foreground hover:text-primary transition-colors">Contact</Link>
           </div>
 
           <div className="flex flex-col gap-3 text-sm">
             <h4 className="font-mono text-xs uppercase tracking-wider text-muted-foreground mb-1">Learn &amp; Work With Me</h4>
             <Link to="/academy" className="text-muted-foreground hover:text-primary transition-colors">AI Academy</Link>
-            <Link to="/solutions/fm-ops" className="text-muted-foreground hover:text-primary transition-colors">Automation</Link>
+            <Link to="/solutions/automation" className="text-muted-foreground hover:text-primary transition-colors">Automation</Link>
             <Link to="/privacy" className="text-muted-foreground hover:text-primary transition-colors">Privacy Policy</Link>
             <Link to="/terms" className="text-muted-foreground hover:text-primary transition-colors">Terms &amp; Conditions</Link>
           </div>

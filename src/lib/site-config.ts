@@ -15,5 +15,5 @@ export const NAV_LINKS = [
   { label: "Sessions", href: "/sessions" },
   { label: "AI Academy", href: "/academy" },
   { label: "Products", href: "/products" },
-  { label: "Automation", href: "/solutions/fm-ops" },
+  { label: "Automation", href: "/solutions/automation" },
 ] as const;

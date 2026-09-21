@@ -60,7 +60,7 @@ function AutomationGrid({ items, delayOffset = 0 }: { items: typeof UNIVERSAL_AU
 }
 
 const B2BSolutions = () => {
-  const [tab, setTab] = useState("fm");
+  const [tab, setTab] = useState("industry");
 
   return (
     <div className="min-h-screen bg-background">

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
@@ -60,7 +60,9 @@ const AnimatedRoutes = () => {
         <Route path="/about" element={<PageTransition><About /></PageTransition>} />
         <Route path="/sessions" element={<PageTransition><Sessions /></PageTransition>} />
         <Route path="/academy" element={<PageTransition><Academy /></PageTransition>} />
-        <Route path="/solutions/fm-ops" element={<PageTransition><B2BSolutions /></PageTransition>} />
+        <Route path="/solutions/automation" element={<PageTransition><B2BSolutions /></PageTransition>} />
+        {/* Old URL, kept working for anyone who already has it bookmarked or shared */}
+        <Route path="/solutions/fm-ops" element={<Navigate to="/solutions/automation" replace />} />
         <Route path="/products" element={<PageTransition><Products /></PageTransition>} />
         <Route path="/quantum-assistant" element={<PageTransition><QuantumAssistant /></PageTransition>} />
         <Route path="/ats-resume-optimizer" element={<PageTransition><AtsResumeOptimizer /></PageTransition>} />
