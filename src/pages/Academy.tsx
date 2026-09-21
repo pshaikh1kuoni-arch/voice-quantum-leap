@@ -2,12 +2,7 @@ import { SiteNavbar } from "@/components/SiteNavbar";
 import { SiteFooter } from "@/components/SiteFooter";
 import { EmailCopyButton } from "@/components/EmailCopyButton";
 import { Reveal, KineticInView, SpotlightPanel } from "@/lib/motion";
-
-const LEVELS = [
-  { n: "01", t: "Awareness, for execution teams", d: "Learn to use AI tools daily, save time, and get more done." },
-  { n: "02", t: "Strategy, for middle management", d: "Build strong business cases and drive better ROI." },
-  { n: "03", t: "Leadership, for CXOs", d: "Monitor execution, review performance, and sharpen decision making." },
-];
+import { LevelsGrid } from "@/components/LevelsGrid";
 
 const TRACKS = [
   {
@@ -59,19 +54,7 @@ const Academy = () => {
             <h2 className="font-display text-2xl sm:text-3xl font-semibold mb-8">A three level path, already field tested</h2>
           </Reveal>
           <Reveal delay={100}>
-            <SpotlightPanel className="rounded-2xl border border-border bg-card">
-              <div className="p-8">
-                {LEVELS.map((lvl, i) => (
-                  <div key={lvl.n} className={`flex items-center gap-4 py-4 ${i < LEVELS.length - 1 ? "border-b border-border" : ""}`}>
-                    <span className="font-display font-bold text-2xl text-primary w-10 shrink-0">{lvl.n}</span>
-                    <div>
-                      <div className="font-semibold">{lvl.t}</div>
-                      <div className="text-sm text-muted-foreground">{lvl.d}</div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </SpotlightPanel>
+            <LevelsGrid />
             <p className="text-xs text-muted-foreground mt-4">
               Most recently delivered as the GACS AI Transformation Masterclass, October to December 2025. Session
               flyers to follow.
@@ -90,7 +73,7 @@ const Academy = () => {
         <div className="container max-w-6xl mx-auto">
           <Reveal>
             <span className="block font-mono text-xs font-semibold uppercase tracking-wider text-secondary mb-3">
-              Three Learning Tracks
+              3 Learning Tracks
             </span>
             <h2 className="font-display text-2xl sm:text-3xl font-semibold mb-12">Who this is for</h2>
           </Reveal>

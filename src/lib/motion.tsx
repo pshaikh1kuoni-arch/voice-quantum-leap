@@ -286,54 +286,6 @@ export function ScrollProgress() {
   );
 }
 
-/* ============ sticky stacking cards ============ */
-
-/**
- * Tracks scroll progress across a whole stack of cards. Pass the returned
- * progress + ref to StackCard for each card in the stack.
- */
-export function useCardStack(ref: React.RefObject<HTMLElement>) {
-  return useScroll({ target: ref, offset: ["start start", "end end"] });
-}
-
-export function StackCard({
-  index,
-  total,
-  progress,
-  slotClassName = "h-[70vh]",
-  className,
-  children,
-}: {
-  index: number;
-  total: number;
-  progress: MotionValue<number>;
-  slotClassName?: string;
-  className?: string;
-  children: React.ReactNode;
-}) {
-  const reducedMotion = usePrefersReducedMotion();
-  const targetScale = 1 - (total - 1 - index) * 0.04;
-  const scale = useTransform(progress, [index / total, 1], [1, targetScale]);
-
-  if (reducedMotion) {
-    return (
-      <div className="py-3">
-        <div className={className}>{children}</div>
-      </div>
-    );
-  }
-
-  return (
-    <div className={slotClassName}>
-      <div className="sticky flex items-center" style={{ top: `calc(6rem + ${index * 18}px)` }}>
-        <motion.div style={{ scale }} className={className}>
-          {children}
-        </motion.div>
-      </div>
-    </div>
-  );
-}
-
 /* ============ character-by-character scroll reveal ============ */
 
 function RevealChar({ progress, range, char }: { progress: MotionValue<number>; range: [number, number]; char: string }) {
@@ -441,7 +393,7 @@ export function SpotlightPanel({
           style={{ background }}
         />
       )}
-      <div className="relative">{children}</div>
+      <div className="relative h-full">{children}</div>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useMemo } from "react";
 import { Link } from "react-router-dom";
 import { SiteNavbar } from "@/components/SiteNavbar";
 import { SiteFooter } from "@/components/SiteFooter";
@@ -11,13 +11,13 @@ import {
   Marquee,
   ScrollProgress,
   Magnetic,
-  useCardStack,
-  StackCard,
   ScrollRevealText,
   ImageReveal,
   SpotlightPanel,
 } from "@/lib/motion";
 import { SITE } from "@/lib/site-config";
+import { SEEDED_PRODUCTS } from "@/data/products";
+import { useSheetGalleryProducts } from "@/lib/productSheet";
 import headshot from "@/assets/parvez-shaikh-headshot.png";
 
 const TRUST_STATS = [
@@ -25,8 +25,6 @@ const TRUST_STATS = [
   { value: "10,000+", label: "LinkedIn network" },
   { value: "500+", label: "Workflows automated" },
 ];
-
-const PROOF_TOTAL = 2;
 
 const MARQUEE_ITEMS = [
   "AI for Facility Management",
@@ -38,8 +36,10 @@ const MARQUEE_ITEMS = [
 ];
 
 const Home = () => {
-  const stackRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress: stackProgress } = useCardStack(stackRef);
+  const { data: sheetProducts = [] } = useSheetGalleryProducts();
+  const allProducts = useMemo(() => [...SEEDED_PRODUCTS, ...sheetProducts], [sheetProducts]);
+  const liveProducts = useMemo(() => allProducts.filter((p) => p.status === "Live"), [allProducts]);
+  const upcomingProducts = useMemo(() => allProducts.filter((p) => p.status === "Upcoming"), [allProducts]);
 
   return (
     <div className="min-h-screen bg-background">
@@ -243,60 +243,57 @@ const Home = () => {
             </h2>
           </Reveal>
 
-          <div ref={stackRef}>
-            <StackCard index={0} total={PROOF_TOTAL} progress={stackProgress} slotClassName="h-[52vh] min-h-[420px]" className="grid sm:grid-cols-2 gap-6 w-full">
-              <SpotlightPanel className="rounded-2xl shadow-xl h-full" tint="white">
-                <div style={{ background: "var(--gradient-quantum)" }} className="rounded-2xl p-8 h-full text-primary-foreground flex flex-col">
-                  <span className="inline-block w-fit text-[10px] font-bold uppercase tracking-wider bg-white/20 rounded-full px-3 py-1 mb-4">
-                    Featured App
-                  </span>
-                  <h3 className="font-display text-2xl font-semibold mb-3">Quantum Assistant</h3>
-                  <p className="text-sm text-white/85 leading-relaxed mb-4">
-                    A voice first daily planner, live on the Play Store. Built by the same person teaching you to
-                    automate.
-                  </p>
-                  <Link to="/quantum-assistant" className="group inline-block mt-auto w-fit text-sm font-semibold underline underline-offset-4">
-                    View product <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
-                  </Link>
-                </div>
-              </SpotlightPanel>
-
-              <TiltCard className="rounded-2xl border border-border bg-card shadow-xl p-8 h-full flex flex-col">
-                <span className="inline-block w-fit text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 rounded-full px-3 py-1 mb-4">
-                  rezoome.in
-                </span>
-                <h3 className="font-display text-2xl font-semibold mb-3">ATS Resume Optimizer</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                  A tailor made AI resume engine that optimizes your profile against ATS systems and specific job
-                  descriptions in seconds.
-                </p>
-                <Link to="/ats-resume-optimizer" className="group inline-block mt-auto w-fit text-sm font-semibold text-primary underline underline-offset-4">
-                  View product <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
-                </Link>
+          <div className="grid sm:grid-cols-2 gap-6">
+            <Reveal from="left">
+              <TiltCard className="rounded-2xl shadow-xl h-full">
+                <SpotlightPanel className="h-full" tint="white">
+                  <div style={{ background: "var(--gradient-quantum)" }} className="rounded-2xl p-8 h-full text-primary-foreground flex flex-col">
+                    <span className="inline-block w-fit text-[10px] font-bold uppercase tracking-wider bg-white/20 rounded-full px-3 py-1 mb-4">
+                      Software I've Built
+                    </span>
+                    <ul className="flex flex-col gap-3 mb-5">
+                      {liveProducts.slice(0, 5).map((p) => (
+                        <li key={p.id} className="text-sm text-white/85 leading-relaxed">
+                          <span className="font-semibold text-white">{p.name}.</span> {p.tagline}
+                        </li>
+                      ))}
+                    </ul>
+                    {liveProducts.length > 5 && (
+                      <p className="text-xs text-white/70 mb-4">+{liveProducts.length - 5} more</p>
+                    )}
+                    <Link to="/products" className="group inline-block mt-auto w-fit text-sm font-semibold underline underline-offset-4">
+                      See all products <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
+                    </Link>
+                  </div>
+                </SpotlightPanel>
               </TiltCard>
-            </StackCard>
+            </Reveal>
 
-            <StackCard index={1} total={PROOF_TOTAL} progress={stackProgress} slotClassName="h-[48vh] min-h-[380px]" className="grid sm:grid-cols-2 gap-6 w-full">
-              <TiltCard className="rounded-2xl border border-border bg-card shadow-xl p-8 h-full flex flex-col">
-                <span className="inline-block w-fit text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 rounded-full px-3 py-1 mb-4">
-                  B2B Automation
-                </span>
-                <h3 className="font-display text-xl font-semibold mb-3">FM &amp; CRE Workflows</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Procurement, assets, travel, and lease abstraction, implemented for real operators.
-                </p>
+            <Reveal from="right" delay={100}>
+              <TiltCard className="rounded-2xl shadow-xl h-full">
+                <SpotlightPanel className="h-full" tint="white">
+                  <div style={{ background: "var(--gradient-quantum)" }} className="rounded-2xl p-8 h-full text-primary-foreground flex flex-col">
+                    <span className="inline-block w-fit text-[10px] font-bold uppercase tracking-wider bg-white/20 rounded-full px-3 py-1 mb-4">
+                      What's Next
+                    </span>
+                    {upcomingProducts.length > 0 ? (
+                      <ul className="flex flex-col gap-3 mb-5">
+                        {upcomingProducts.slice(0, 5).map((p) => (
+                          <li key={p.id} className="text-sm text-white/85 leading-relaxed">
+                            <span className="font-semibold text-white">{p.name}.</span> {p.tagline}
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p className="text-sm text-white/80 mb-5">New software in the works, check back soon.</p>
+                    )}
+                    <Link to="/products" className="group inline-block mt-auto w-fit text-sm font-semibold underline underline-offset-4">
+                      See all products <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
+                    </Link>
+                  </div>
+                </SpotlightPanel>
               </TiltCard>
-
-              <TiltCard className="rounded-2xl border border-border bg-card shadow-xl p-8 h-full flex flex-col">
-                <span className="inline-block w-fit text-[10px] font-bold uppercase tracking-wider text-secondary bg-secondary/10 rounded-full px-3 py-1 mb-4">
-                  B2B Automation
-                </span>
-                <h3 className="font-display text-xl font-semibold mb-3">WhatsApp CRM &amp; RAG</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Ticketing, SOP bots, and contract search, or let me build it for your team.
-                </p>
-              </TiltCard>
-            </StackCard>
+            </Reveal>
           </div>
         </div>
       </section>

@@ -1,20 +1,8 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Reveal, SpotlightPanel } from "@/lib/motion";
-
-const LEVELS = [
-  { n: "01", t: "Awareness, for execution teams", d: "Learn to use AI tools daily, save time, and get more done." },
-  { n: "02", t: "Strategy, for middle management", d: "Build strong business cases and drive better ROI." },
-  { n: "03", t: "Leadership, for CXOs", d: "Monitor execution, review performance, and sharpen decision making." },
-];
-
-const FM_PROOF = [
-  "Data Health Agent, built to catch and flag data quality issues in operations data",
-  "Predictive Maintenance Agent, using a retrieval system over maintenance history to support decisions",
-  "ESG Occupancy Attendant Agent, for occupancy and ESG tracking",
-  "Lease abstraction automation, built directly for real estate and facility operators",
-  "A six week AI for FM curriculum, built for a RICS India engagement",
-];
+import { LevelsGrid } from "@/components/LevelsGrid";
 
 export const ChooseYourPath = () => {
   const [tab, setTab] = useState("industry");
@@ -44,15 +32,9 @@ export const ChooseYourPath = () => {
           <TabsContent value="industry">
             <SpotlightPanel className="rounded-2xl border border-border bg-card">
               <div className="p-8">
-                <p className="italic font-display text-lg mb-6 gradient-text w-fit">Three levels, one program.</p>
-                <div className="grid sm:grid-cols-3 gap-6 mb-8">
-                  {LEVELS.map((lvl) => (
-                    <div key={lvl.n}>
-                      <span className="font-display font-bold text-xl text-primary">{lvl.n}</span>
-                      <h4 className="text-sm font-semibold mt-2 mb-1">{lvl.t}</h4>
-                      <p className="text-xs text-muted-foreground leading-relaxed">{lvl.d}</p>
-                    </div>
-                  ))}
+                <p className="italic font-display text-lg mb-6 gradient-text w-fit">3 levels, 1 program.</p>
+                <div className="mb-8">
+                  <LevelsGrid />
                 </div>
                 <p className="text-sm text-muted-foreground border-t border-border pt-6 leading-relaxed">
                   Recently delivered for teams well outside facility management too, including KEP Engineering
@@ -67,14 +49,16 @@ export const ChooseYourPath = () => {
             <SpotlightPanel className="rounded-2xl border border-border bg-card">
               <div className="p-8">
                 <p className="italic font-display text-lg mb-6 gradient-text w-fit">
-                  Sixteen years across BFSI, GCC, Retail, Manufacturing, and Logistics. This is where the training
+                  16 years across BFSI, GCC, Retail, Manufacturing, and Logistics. This is where the training
                   and automation go deeper.
                 </p>
-                <ul className="flex flex-col gap-3 mb-6 text-sm text-muted-foreground">
-                  {FM_PROOF.map((item) => (
-                    <li key={item}>• {item}</li>
-                  ))}
-                </ul>
+                <p className="text-sm text-muted-foreground mb-6 leading-relaxed">
+                  Data health agents, predictive maintenance, ESG tracking, and lease abstraction, already built
+                  and shipped for real FM and CRE operators.{" "}
+                  <Link to="/products" className="text-primary font-semibold underline underline-offset-4">
+                    See the software →
+                  </Link>
+                </p>
                 <p className="text-sm text-muted-foreground border-t border-border pt-6 leading-relaxed">
                   If your team runs facility management or a real estate portfolio, this is where the deeper
                   automation and training conversation starts.
