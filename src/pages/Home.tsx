@@ -19,6 +19,20 @@ import { SITE } from "@/lib/site-config";
 import { SEEDED_PRODUCTS } from "@/data/products";
 import { useSheetGalleryProducts } from "@/lib/productSheet";
 import headshot from "@/assets/parvez-shaikh-headshot.png";
+import { SpecRow } from "@/components/SpecRow";
+import {
+  MessageCircle,
+  Cpu,
+  Search,
+  Code2,
+  Clapperboard,
+  LayoutGrid,
+  ListChecks,
+  Zap,
+  BarChart3,
+  Target,
+  Package,
+} from "lucide-react";
 
 const TRUST_STATS = [
   { value: "100+", label: "Knowledge sessions delivered" },
@@ -132,53 +146,44 @@ const Home = () => {
                   I teach every major AI tool in current use, organized by what a team actually needs to get done,
                   not just the two or three names everyone already knows.
                 </p>
-                <ul className="flex flex-col gap-3 mb-5 text-sm text-muted-foreground">
-                  <li className="flex gap-2">
-                    <span className="text-primary">✦</span>
-                    <span>
-                      <strong className="text-foreground">Generative AI chat tools:</strong> ChatGPT, Gemini, Claude,
-                      Grok, and current open weight models such as DeepSeek and GLM
-                    </span>
-                  </li>
-                  <li className="flex gap-2">
-                    <span className="text-primary">✦</span>
-                    <span>
-                      <strong className="text-foreground">Prompt engineering and agentic AI:</strong> designing AI
-                      agents and agentic workflows using frameworks such as LangChain, n8n, and OpenClaw
-                    </span>
-                  </li>
-                  <li className="flex gap-2">
-                    <span className="text-primary">✦</span>
-                    <span>
-                      <strong className="text-foreground">Document intelligence and RAG:</strong> NotebookLM and
-                      retrieval augmented generation systems that turn a team's own SOPs, policies, and meeting
-                      notes into a searchable, accurate assistant
-                    </span>
-                  </li>
-                  <li className="flex gap-2">
-                    <span className="text-primary">✦</span>
-                    <span>
-                      <strong className="text-foreground">Vibe coding and AI app building:</strong> Claude Code,
-                      Cursor, Google Antigravity, and Replit, letting any team build small internal tools without
-                      writing code from scratch
-                    </span>
-                  </li>
-                  <li className="flex gap-2">
-                    <span className="text-primary">✦</span>
-                    <span>
-                      <strong className="text-foreground">AI video and image creation:</strong> HeyGen, Descript,
-                      and Higgsfield, for training material, presentations, and marketing content without a
-                      production budget
-                    </span>
-                  </li>
-                  <li className="flex gap-2">
-                    <span className="text-primary">✦</span>
-                    <span>
-                      <strong className="text-foreground">AI inside everyday work tools:</strong> Microsoft Copilot
-                      and similar assistants now built directly into Word, Excel, and PowerPoint
-                    </span>
-                  </li>
-                </ul>
+                <div className="flex flex-col gap-4 mb-5">
+                  <SpecRow
+                    icon={MessageCircle}
+                    tone="primary"
+                    title="Generative AI chat tools"
+                    description="ChatGPT, Gemini, Claude, Grok, and current open weight models such as DeepSeek and GLM."
+                  />
+                  <SpecRow
+                    icon={Cpu}
+                    tone="primary"
+                    title="Prompt engineering and agentic AI"
+                    description="Designing AI agents and agentic workflows using frameworks such as LangChain, n8n, and OpenClaw."
+                  />
+                  <SpecRow
+                    icon={Search}
+                    tone="primary"
+                    title="Document intelligence and RAG"
+                    description="NotebookLM and retrieval augmented generation systems that turn a team's own SOPs, policies, and meeting notes into a searchable, accurate assistant."
+                  />
+                  <SpecRow
+                    icon={Code2}
+                    tone="primary"
+                    title="Vibe coding and AI app building"
+                    description="Claude Code, Cursor, Google Antigravity, and Replit, letting any team build small internal tools without writing code from scratch."
+                  />
+                  <SpecRow
+                    icon={Clapperboard}
+                    tone="primary"
+                    title="AI video and image creation"
+                    description="HeyGen, Descript, and Higgsfield, for training material, presentations, and marketing content without a production budget."
+                  />
+                  <SpecRow
+                    icon={LayoutGrid}
+                    tone="primary"
+                    title="AI inside everyday work tools"
+                    description="Microsoft Copilot and similar assistants now built directly into Word, Excel, and PowerPoint."
+                  />
+                </div>
                 <p className="text-sm italic text-muted-foreground border-t border-border pt-4 mt-auto">
                   Delivered using real work from your own operations as the case study, not generic examples.
                 </p>
@@ -195,36 +200,32 @@ const Home = () => {
                   search bots. Once it is built it runs with zero manual intervention, so the gains compound every
                   day instead of depending on someone remembering to do the task.
                 </p>
-                <ul className="flex flex-col gap-3 text-sm text-muted-foreground">
-                  <li className="flex gap-2">
-                    <span className="text-primary">✦</span>
-                    <span>
-                      <strong className="text-foreground">Productivity:</strong> repeatable tasks such as data
-                      entry, reporting, and document extraction run on their own
-                    </span>
-                  </li>
-                  <li className="flex gap-2">
-                    <span className="text-primary">✦</span>
-                    <span>
-                      <strong className="text-foreground">Efficiency:</strong> fewer manual handoffs, faster
-                      turnaround, lower error rates
-                    </span>
-                  </li>
-                  <li className="flex gap-2">
-                    <span className="text-primary">✦</span>
-                    <span>
-                      <strong className="text-foreground">Decision making power:</strong> dashboards and agents
-                      that surface the right numbers before a meeting, not after
-                    </span>
-                  </li>
-                  <li className="flex gap-2">
-                    <span className="text-primary">✦</span>
-                    <span>
-                      <strong className="text-foreground">Strategy building:</strong> automation that frees senior
-                      time away from repetitive work and toward planning
-                    </span>
-                  </li>
-                </ul>
+                <div className="flex flex-col gap-4">
+                  <SpecRow
+                    icon={ListChecks}
+                    tone="secondary"
+                    title="Productivity"
+                    description="Repeatable tasks such as data entry, reporting, and document extraction run on their own."
+                  />
+                  <SpecRow
+                    icon={Zap}
+                    tone="secondary"
+                    title="Efficiency"
+                    description="Fewer manual handoffs, faster turnaround, lower error rates."
+                  />
+                  <SpecRow
+                    icon={BarChart3}
+                    tone="secondary"
+                    title="Decision making power"
+                    description="Dashboards and agents that surface the right numbers before a meeting, not after."
+                  />
+                  <SpecRow
+                    icon={Target}
+                    tone="secondary"
+                    title="Strategy building"
+                    description="Automation that frees senior time away from repetitive work and toward planning."
+                  />
+                </div>
               </TiltCard>
             </Reveal>
           </div>
@@ -251,13 +252,11 @@ const Home = () => {
                     <span className="inline-block w-fit text-[10px] font-bold uppercase tracking-wider bg-white/20 rounded-full px-3 py-1 mb-4">
                       Software I've Built
                     </span>
-                    <ul className="flex flex-col gap-3 mb-5">
+                    <div className="flex flex-col gap-3 mb-5">
                       {liveProducts.slice(0, 5).map((p) => (
-                        <li key={p.id} className="text-sm text-white/85 leading-relaxed">
-                          <span className="font-semibold text-white">{p.name}.</span> {p.tagline}
-                        </li>
+                        <SpecRow key={p.id} icon={Package} tone="white" title={p.name} description={p.tagline} />
                       ))}
-                    </ul>
+                    </div>
                     {liveProducts.length > 5 && (
                       <p className="text-xs text-white/70 mb-4">+{liveProducts.length - 5} more</p>
                     )}
@@ -277,13 +276,11 @@ const Home = () => {
                       What's Next
                     </span>
                     {upcomingProducts.length > 0 ? (
-                      <ul className="flex flex-col gap-3 mb-5">
+                      <div className="flex flex-col gap-3 mb-5">
                         {upcomingProducts.slice(0, 5).map((p) => (
-                          <li key={p.id} className="text-sm text-white/85 leading-relaxed">
-                            <span className="font-semibold text-white">{p.name}.</span> {p.tagline}
-                          </li>
+                          <SpecRow key={p.id} icon={Package} tone="white" title={p.name} description={p.tagline} />
                         ))}
-                      </ul>
+                      </div>
                     ) : (
                       <p className="text-sm text-white/80 mb-5">New software in the works, check back soon.</p>
                     )}

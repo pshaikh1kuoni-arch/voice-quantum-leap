@@ -124,3 +124,8 @@
   from { transform: translateX(0); }
   to { transform: translateX(-33.3333%); }
 }
+
+@keyframes sheen {
+  0% { background-position: 200% 50%; }
+  100% { background-position: -60% 50%; }
+}
